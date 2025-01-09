@@ -1,7 +1,7 @@
 {
   "name": "UsingGlobalContantsAndVariables",
   "projectId": "e5d42bb7-55f0-4e49-8674-06b5172c1565",
-  "description": "Blank Process",
+  "description": "In this project we will calculate VAT (Value Added Tax) using Global Constants and Variables.",
   "main": "Main.xaml",
   "dependencies": {
     "UiPath.System.Activities": "[24.10.7]"
