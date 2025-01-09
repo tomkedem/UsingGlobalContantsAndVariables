@@ -217,9 +217,9 @@
       <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Asks for the user to enter the purchese amount. Then converts the entered value from String To Double." DisplayName="EnteringPurchaseAmount" sap:VirtualizedContainerService.HintSize="927,430" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Asks for the user to enter the purchese amount. Then converts the entered value from String To Double." DisplayName="EnteringPurchaseAmount" sap:VirtualizedContainerService.HintSize="927,603" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Name="strSubtotalAmount" />
+      <Variable x:TypeArguments="x:String" Name="strSubtotalQuantity" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -229,16 +229,17 @@
     </sap:WorkflowViewStateService.ViewState>
     <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Prompt user to enter purchase amount" sap:VirtualizedContainerService.HintSize="434,271" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Please enter the purchase amount:" Title="Purchase Amount Input">
       <ui:InputDialog.Result>
-        <OutArgument x:TypeArguments="x:Object">[purchaseAmount]</OutArgument>
+        <OutArgument x:TypeArguments="x:String">[strSubtotalQuantity]</OutArgument>
       </ui:InputDialog.Result>
     </ui:InputDialog>
-    <Assign DisplayName="Convert entered value from String to Double" sap:VirtualizedContainerService.HintSize="434,105" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign DisplayName="Convert entered value from String to Double" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Double">[GlobalVariablesNamespace.GlobalVariables.SubtotalQuantity]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:Double">[Convert.ToDouble(purchaseAmount)]</InArgument>
+        <InArgument x:TypeArguments="x:Double">[Convert.ToDouble(strSubtotalQuantity)]</InArgument>
       </Assign.Value>
     </Assign>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,164" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;The purchase amount before taxes is: &quot; &amp; strSubtotalQuantity.ToString()]" />
   </Sequence>
 </Activity>
